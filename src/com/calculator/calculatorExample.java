@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class calculatorExample {
-    public static void main(String[] args) throws IOException  //static method
+    public static void main(String[] args)
     {
         try {
             System.out.println("enter a number\n");
@@ -68,7 +68,7 @@ public class calculatorExample {
 
         if (processType.equals("+")) {
             result = String.valueOf(number + number2);
-        } else if (processType.equals("x")) {
+        } else if (processType.equals("*")) {
             result = String.valueOf(number * number2);
         } else if (processType.equals("/")) {
             result = String.valueOf(number / number2);
