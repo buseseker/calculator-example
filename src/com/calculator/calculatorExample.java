@@ -4,15 +4,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static com.calculator.calculatorProcessControl.calculateAndReturn;
+
 public class calculatorExample {
     public static void main(String[] args)
     {
+
+        boolean yesOrNo;
+
+        yesOrNo = mainMethod();
+
+        while (yesOrNo == true) {
+
+            yesOrNo = mainMethod();
+
+        }
+
+    }
+
+    public static BufferedReader returnReader() {
+
+        return new BufferedReader(
+                new InputStreamReader(System.in));
+    }
+
+    public static boolean mainMethod() {
+
         try {
             System.out.println("enter a number\n");
 
             // Enter data using BufferReader
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(System.in));
+            BufferedReader reader = returnReader();
 
             // Reading data using readLine
             String input = reader.readLine();
@@ -24,8 +46,7 @@ public class calculatorExample {
             System.out.println("choose process type");
 
             // Enter data using BufferReader
-            BufferedReader reader2 = new BufferedReader(
-                    new InputStreamReader(System.in));
+            BufferedReader reader2 = returnReader();
 
             // Reading data using readLine
             String processType = reader2.readLine();
@@ -37,8 +58,7 @@ public class calculatorExample {
             System.out.println("enter another number\n");
 
             // Enter data using BufferReader
-            BufferedReader reader3 = new BufferedReader(
-                    new InputStreamReader(System.in));
+            BufferedReader reader3 = returnReader();
 
             // Reading data using readLine
             String input2 = reader3.readLine();
@@ -53,31 +73,30 @@ public class calculatorExample {
 
             System.out.println("result is " + result);
 
+            System.out.println("Do you want to calculate again ? (y/n): ");
+
+            BufferedReader reader4 = returnReader();
+
+            String newProcess = reader4.readLine();
+
+            if (newProcess.equals("y")) {
+
+                return true;
+            }else {
+
+                return false;
+            }
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
 
-
     }
 
-    public static String calculateAndReturn(int number, int number2, String processType) {
-
-        String result = null;
-
-        if (processType.equals("+")) {
-            result = String.valueOf(number + number2);
-        } else if (processType.equals("*")) {
-            result = String.valueOf(number * number2);
-        } else if (processType.equals("/")) {
-            result = String.valueOf(number / number2);
-        } else if (processType.equals("-")) {
-            result = String.valueOf(number - number2);
-        }
-
-        return result;
-    }
 }
 
 
